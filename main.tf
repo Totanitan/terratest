@@ -1,3 +1,13 @@
+terraform{
+  required_providers {
+    aws ={
+      source ="hashicorp/aws"
+      version = "~> 4"
+    } 
+  }
+  required_version =">=1.0.0"
+}
+
 provider "aws" {
   region = "ap-northeast-1"
 }
@@ -36,4 +46,7 @@ resource "aws_internet_gateway" "aws-tf-igw" {
 resource "aws_instance" "hello" {
   ami = "ami-0701e21c502689c31"
   instance_type = "t3.micro"
+  tags = {
+    Name = "test_instance"
   }
+}
